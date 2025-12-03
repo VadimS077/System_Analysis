@@ -186,7 +186,7 @@ def main(s: str, e: str) -> str:
     contradiction_core = find_contradiction_core(ranking_a, ranking_b, consensus)
     
 
-    return json.dumps(contradiction_core, ensure_ascii=False)
+    return [json.dumps(contradiction_core, ensure_ascii=False),consensus]
 
 with open('Ранжировка  A.json', 'r', encoding='utf-8') as f:
     ranking_a = f.read()
@@ -200,5 +200,5 @@ print()
 
 result = main(ranking_a, ranking_b)
 
-print("Результат (ядро противоречий):", result)
-
+print("Результат (ядро противоречий):", result[0])
+print("Результат (консенсус):", result[1])
